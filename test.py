@@ -1,10 +1,24 @@
 import unittest
 
 from main import PidController
+
 from main import ReadyQueue
 from main import FileSystem
-
 from main import Program
+from main import Memory
+
+
+class MemoryTest:
+    def SetUp(self):
+        self.memory = Memory(8)
+        self.intruction = "Start"
+
+    def test_GivenAnEmptyMemory_WhenGetAnInstruction_ShouldReturnNull(self):
+        assert None == self.memory.get(0x0a)
+
+    def test_GivenAMemory_WhenPutAnInstruction_ShouldReturnThatInstruction(self):
+        self.memory.put(0x0, self.intruction)
+        assert self.instruction == self.memory.get(0x0)
 
 class PidControllerTestCase(unittest.TestCase):
 
@@ -38,13 +52,33 @@ class ReadyQueueTestCase(unittest.TestCase):
 class FileSystemTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.program1 = Program("Program1")
-        self.program2 = Program("Program2")
-        self.program3 = Program("Program3")
+        self.i1 = "start"
+        self.i2 = "run"
+        self.i3 = "end"
+        self.name = "NombrePrograma"
+        self.instructions = [self.i1, self.i2, self.i3]
+        self.program1 = Program(self.name, self.instructions)
         self.fileSystem = FileSystem()
 
+    def test_GivenAFileSystemWithAProgram_WhenAddAProgramWithTheSameName_ShouldRaiseAnError(self):
+        assert self.name == self.fileSystem.addProgram(self.program1)
+        try:
+            self.string == self.fileSystem.addProgram(self.program1)
+        except FileSystemHasThatProgramError:
+            print "El Programa ya esta instalado"
+            assert self.string == self.name
+
+
     def test_GivenAFileSystem_WhenAddAProgram_ShouldBeReturnedByName(self):
-        pass
+        assert self.name == self.fileSystem.addProgram(self.program1)
+
+    def test_GivenAFileSystem_WhenDeleteAnExistingProgram_ShouldReturnTrue(self):
+        self.fileSystem.addProgram(self.program1)
+        assert self.fileSystem.remProgram(self.name)
+
+    def test_GivenAFileSystem_WhenDeleteANOTExistingProgram_ShouldReturnFalse(self):
+        assert False == self.fileSystem.remProgram(self.name)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -50,25 +50,26 @@ class PidController(object):
 class FileSystem(object):
 
     def __init__(self):
-        self.memory = {}
+        self.fileSystem = {}
 
-    def addProgram(self, name, program):
-        self.memory[name] = program
+    def addProgram(self, program):
+        self.fileSystem[program.name] = program.instructions
+        return program.name
 
-    def searchProgram(self, name):
-        return self.memory.get(name)
 
-class Ram(object):
-
-    def __init__(self):
-        self.maxMemory = 10
+class Memory(object):
+    def __init__(self, size):
+        self.maxMemory = size
         self.memory = []
 
-    def addInstruction(self, i, instruction):
+    def put(self, i, instruction):
         if i < self.maxMemory:
             self.memory[i] = instruction
         else:
             pass
+
+    def get(self, i):
+        return self.memory[i]
 
 class Scheduler(object):
 
