@@ -56,7 +56,6 @@ class FileSystem(object):
         self.fileSystem[program.name] = program.instructions
         return program.name
 
-
 class Memory(object):
     def __init__(self, size):
         self.maxMemory = size

@@ -1,2 +1,2 @@
 # SistemasOperativos
-Lets save our coments here.
+Lets save our comments here.

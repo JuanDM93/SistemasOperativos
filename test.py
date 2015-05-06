@@ -1,14 +1,14 @@
 import unittest
 
 from main import PidController
-
 from main import ReadyQueue
 from main import FileSystem
 from main import Program
 from main import Memory
 
 
-class MemoryTest:
+class MemoryTest:  # H
+
     def SetUp(self):
         self.memory = Memory(8)
         self.intruction = "Start"
@@ -20,7 +20,8 @@ class MemoryTest:
         self.memory.put(0x0, self.intruction)
         assert self.instruction == self.memory.get(0x0)
 
-class PidControllerTestCase(unittest.TestCase):
+
+class PidControllerTestCase(unittest.TestCase):  # S
 
     def setUp(self):
         self.pidController = PidController()
@@ -28,7 +29,8 @@ class PidControllerTestCase(unittest.TestCase):
     def testNewPid(self):
         assert 1 == self.pidController.newPid()
 
-class ReadyQueueTestCase(unittest.TestCase):
+
+class ReadyQueueTestCase(unittest.TestCase):  # S
 
     def setUp(self):
         self.readyQueue = ReadyQueue()
@@ -49,7 +51,8 @@ class ReadyQueueTestCase(unittest.TestCase):
         assert self.pid == self.readyQueue.take()
         assert self.readyQueue.take() != self.readyQueue.take()
 
-class FileSystemTestCase(unittest.TestCase):
+
+class FileSystemTestCase(unittest.TestCase):  # S
 
     def setUp(self):
         self.i1 = "start"
