@@ -7,12 +7,3 @@ class PCB(object):
 
     def getPID(self, pid):
         self.pid = pid
-
-
-class PidController(object):
-    def __init__(self):
-        self.currentPid = 0
-
-    def newPid(self):
-        self.currentPid += 1
-        return self.currentPid

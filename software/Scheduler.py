@@ -1,2 +1,3 @@
 class Scheduler(object):
-    pass
+    def __init__(self):
+        self.name = "Scheduler"

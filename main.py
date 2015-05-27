@@ -1,7 +1,8 @@
-from software.Program import *
-from hardware.MMU import *
 from software.FileSystem import *
+from software.Scheduler import *
+from software.Kernel import *
 
+from hardware.MMU import *
 from hardware.Clock import *
 from hardware.CPU import *
 from hardware.Memory import *
@@ -25,6 +26,11 @@ program3 = Program("space", instructionSet3)
 
 disk = Disk(64)
 fileSystem = FileSystem(disk)
+fileSystem.addProgram(program0)
+fileSystem.addProgram(program1)
+fileSystem.addProgram(program2)
+fileSystem.addProgram(program3)
+
 memory = Memory(4)
 mmu = MMU(memory)
 
@@ -35,4 +41,6 @@ readyQueue = ReadyQueue()
 cpu = CPU(mmu)
 clock = Clock(cpu)
 
-# scheduler = Scheduler(2)
+scheduler = Scheduler()
+kernel = Kernel(cpu, scheduler, mmu)
+kernel.start()

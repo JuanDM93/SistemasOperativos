@@ -1,13 +1,12 @@
 class FileSystem(object):
-
-    def __init__(self):
-        self.fileSystem = {}
+    def __init__(self, disk):
+        self.disk = disk
 
     def addProgram(self, program):
-        if self.fileSystem.has_key(program):
+        if self.disk.has_key(program):
             return None
         else:
-            self.fileSystem[program.name] = program.instructions
+            self.disk[program.name] = program.instructions
             return program.name
 
 
