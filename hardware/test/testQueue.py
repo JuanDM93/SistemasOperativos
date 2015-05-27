@@ -1,8 +1,7 @@
 import unittest
 
-from hardware.Queue import *
+from hardware.Queues import *
 from software.PCB import *
-
 
 class ReadyQueueTestCase(unittest.TestCase):
     def setUp(self):
@@ -23,7 +22,6 @@ class ReadyQueueTestCase(unittest.TestCase):
         self.readyQueue.insert(self.pidController.newPid())
         assert self.pid == self.readyQueue.take()
         assert self.readyQueue.take() != self.readyQueue.take()
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,8 +1,13 @@
 class Program(object):
-    def __init__(self, name):
+    def __init__(self, name, instructions):
         self.name = name
-        self.instructions = []
+        self.instructions = instructions
 
+    def getInstructions(self):
+        return self.instructions
+
+    def getName(self):
+        return self.name
 
 class Instruction(object):
     def __init__(self, mode, instruction):

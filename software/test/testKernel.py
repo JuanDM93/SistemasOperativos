@@ -2,7 +2,6 @@ import unittest
 
 from software.Kernel import Kernel
 
-
 class KernelTestCase(unittest.TestCase):
     def setUp(self):
         self.kernel = Kernel()

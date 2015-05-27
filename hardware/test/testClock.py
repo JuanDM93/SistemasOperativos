@@ -3,11 +3,12 @@ import unittest
 
 from mockito import *
 
+""" from hardware.CPU import CPU """
 from hardware.Clock import Clock
-
 
 class ClockTestCase(unittest.TestCase):
     def setUp(self):
+        """ self.cpu = CPU() """
         self.cpu = mock()
         self.clock = Clock(self.cpu)
 
@@ -30,7 +31,6 @@ class ClockTestCase(unittest.TestCase):
 
     def tearDown(self):
         self.clock.stoprunning()
-
 
 if __name__ == "__main__":
     unittest.main()

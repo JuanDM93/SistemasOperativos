@@ -1,7 +1,6 @@
 import time
 import threading
 
-
 class Clock(threading.Thread):
     def __init__(self, aCpu):
         super(Clock, self).__init__()

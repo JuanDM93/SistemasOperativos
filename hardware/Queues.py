@@ -1,6 +1,5 @@
 import Queue
 
-
 class ReadyQueue(object):
     def __init__(self):
         self.queue = Queue.Queue()

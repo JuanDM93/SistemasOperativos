@@ -1,6 +1,6 @@
 import unittest
 
-from software.FileSystem import FileSystem
+from software.FileSystem import *
 from software.Program import *
 
 
@@ -16,11 +16,8 @@ class FileSystemTestCase(unittest.TestCase):
 
     def test_GivenAFileSystemWithAProgram_WhenAddAProgramWithTheSameName_ShouldRaiseAnError(self):
         assert self.name == self.fileSystem.addProgram(self.program1)
-        try:
-            self.string == self.fileSystem.addProgram(self.program1)
-        except FileSystemHasThatProgramError:
-            print "El Programa ya esta instalado"
-            assert self.string == self.name
+        self.string = self.fileSystem.addProgram(self.program1)
+        assert self.string is None
 
     def test_GivenAFileSystem_WhenAddAProgram_ShouldBeReturnedByName(self):
         assert self.name == self.fileSystem.addProgram(self.program1)
