@@ -1,5 +1,5 @@
 from software.Program import *
-from software.MMU import *
+from hardware.MMU import *
 from software.FileSystem import *
 
 from hardware.Clock import *
@@ -9,7 +9,7 @@ from hardware.Queues import *
 
 instructionAdd = Instruction(True, "add")
 instructionIO = Instruction(False, "IO")
-instructionEND = Instruction(False, "end")
+instructionEND = Instruction(True, "end")
 
 instructionSet0 = (instructionAdd, instructionAdd, instructionIO, instructionAdd,
                    instructionAdd, instructionEND)
@@ -28,8 +28,8 @@ fileSystem = FileSystem(disk)
 memory = Memory(4)
 mmu = MMU(memory)
 
-# startQueue = ReadyQueue()
-# ioQueue = ReadyQueue()
+# startQueue = StartQueue()
+# ioQueue = IOQueue()
 
 readyQueue = ReadyQueue()
 cpu = CPU(mmu)
